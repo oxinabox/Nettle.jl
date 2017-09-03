@@ -25,22 +25,6 @@ if platform_key() in keys(downloads)
     @BP_provides(url, hash, nettle)
 end
 
-
-
-# Hopefully, we never have to use any of these things down here
-if is_windows()
-    using WinRPM
-    provides(WinRPM.RPM, "libnettle-6-2", nettle, os = :Windows )
-end
-
-if is_apple()
-    using Homebrew
-    provides( Homebrew.HB, "nettle", nettle, os = :Darwin )
-end
-
-provides( AptGet, "libnettle4", nettle )
-provides( Yum, "nettle", nettle )
-
 julia_usrdir = normpath(JULIA_HOME*"/../") # This is a stopgap, we need a better built-in solution to get the included libraries
 libdirs = AbstractString["$(julia_usrdir)/lib"]
 includedirs = AbstractString["$(julia_usrdir)/include"]
