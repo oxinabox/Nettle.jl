@@ -8,12 +8,12 @@ const depsjl_path = joinpath(dirname(@__FILE__), "..", "deps", "deps.jl")
 if !isfile(depsjl_path)
     error("Nettle not installed properly, run Pkg.build(\"Nettle\"), restart Julia and try again")
 end
-include(joinpath(dirname(@__FILE__), "..", "deps", "deps.jl"))
+include(depsjl_path)
 
-include( "hash_common.jl" )
-include( "hash.jl" )
-include( "hmac.jl" )
-include( "cipher.jl" )
+include("hash_common.jl")
+include("hash.jl")
+include("hmac.jl")
+include("cipher.jl")
 
 function get_libnettle_version()
     global libnettle
