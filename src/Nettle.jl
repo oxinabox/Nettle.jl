@@ -1,4 +1,4 @@
-VERSION >= v"0.4.0-dev+6521" && __precompile__()
+__precompile__()
 module Nettle
 using Compat
 import Compat.String
@@ -29,9 +29,7 @@ function __init__()
     global const nettle_major_version = get_libnettle_version()
 end
 
-if VERSION >= v"0.4.0-dev+6521"
-    include("precompile.jl")
-    _precompile_()
-end
+include("precompile.jl")
+_precompile_()
 
 end # module
